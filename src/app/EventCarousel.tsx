@@ -89,6 +89,8 @@ export default function EventCarousel({
   const speakContent = async () => {
     if (!selectedEvent) return;
 
+    const labels = labelTranslations[language];
+
     const convertTo12HourFormat = (time: string) => {
         const [hours, minutes] = time.split(":").map(Number);
         const period = hours >= 12 ? "PM" : "AM";
@@ -100,16 +102,16 @@ export default function EventCarousel({
       const formattedTime = convertTo12HourFormat(selectedEvent.time);
   
     const content = `
-  Title: ${selectedEvent.title}.
-  Date: ${new Intl.DateTimeFormat("en-US", {
+   ${selectedEvent.title}.
+   ${new Intl.DateTimeFormat("en-US", {
       month: "long",
       day: "numeric",
       year: "numeric",
     }).format(new Date(selectedEvent.date))} at ${formattedTime}.
-  Address: ${selectedEvent.address}.
-  Coordinates: ${selectedEvent.coordinates}.
-  Age Range: ${selectedEvent.ageRange}.
-  Description: ${selectedEvent.description}.
+  ${labels.address}: ${selectedEvent.address}.
+  ${labels.coordinates}: ${selectedEvent.coordinates}.
+  ${labels.ageRange}: ${selectedEvent.ageRange}.
+  ${labels.description}: ${selectedEvent.description}.
     `;
   
     try {
@@ -182,7 +184,8 @@ export default function EventCarousel({
         }).format(new Date(selectedEvent.date))}
 
         The lesson plan is for impoverished youth in India. They do not have
-        access to modern technology or resources. Please create a comprehensive
+        access to modern technology or resources, but I can bring basic learning supplies for them. 
+        Please let me know what supplies to bring, and please create a comprehensive
         lesson plan that should include objectives, activities, and expected outcomes.
       `;
 

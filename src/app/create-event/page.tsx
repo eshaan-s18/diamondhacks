@@ -68,7 +68,7 @@ export default function CreateEvent() {
       const data = await response.json();
 
       if (data.success) {
-        alert("Event created successfully!");
+        // alert("Event created successfully!");
         router.push("/your-events"); // Navigate back to /your-events
       } else {
         alert(`Error: ${data.error}`);

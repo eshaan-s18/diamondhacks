@@ -39,6 +39,12 @@ export default function YourEvents() {
       if (response.ok && data.success) {
         const eventIds = data.events; // Array of event IDs from the admin's document
 
+        if (!eventIds || eventIds.length === 0) {
+          setEvents([]); // No events found, set to empty array
+          setLoading(false);
+          return;
+        }
+
         // Fetch event details using the event IDs
         const eventsResponse = await fetch(`/api/events?eventIds=${eventIds.join(",")}`);
         const eventsData = await eventsResponse.json();

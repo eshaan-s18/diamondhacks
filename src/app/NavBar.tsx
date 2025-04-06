@@ -79,10 +79,10 @@ export default function NavBar({ language, onLanguageChange }: NavBarProps) {
       localStorage.setItem("adminEmail", email);
       localStorage.setItem("loggedInUser", JSON.stringify(userDetails));
 
-      alert("Signed in successfully!");
+    //   alert("Signed in successfully!");
       handleCloseModal();
     } catch (err: any) {
-      setError(err.message || "Incorrect email/password");
+      setError("Incorrect email/password");
     }
   };
 
@@ -110,7 +110,7 @@ export default function NavBar({ language, onLanguageChange }: NavBarProps) {
       localStorage.setItem("adminEmail", email);
       localStorage.setItem("loggedInUser", JSON.stringify(userDetails));
 
-      alert("Account created successfully!");
+      alert("Account created successfully! Please sign in.");
       handleCloseModal();
     } catch (err: any) {
       if (err.code === "auth/weak-password") {
@@ -132,7 +132,7 @@ export default function NavBar({ language, onLanguageChange }: NavBarProps) {
       localStorage.removeItem("adminEmail");
       localStorage.removeItem("loggedInUser");
 
-      alert("Logged out successfully!");
+    //   alert("Logged out successfully!");
     } catch (err: any) {
       console.error("Error logging out:", err.message);
     }
@@ -205,6 +205,52 @@ export default function NavBar({ language, onLanguageChange }: NavBarProps) {
           </div>
         </div>
       )}
+
+      {/* Create Account Modal */}
+        {modalType === "createAccount" && (
+        <div className={styles.modalOverlay} onClick={handleCloseModal}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <h2 className={styles.modalTitle}>Create an Account</h2>
+            {error && <p className={styles.errorText}>{error}</p>}
+            <input
+                type="text"
+                placeholder="First Name"
+                className={styles.modalInput}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+            />
+            <input
+                type="text"
+                placeholder="Last Name"
+                className={styles.modalInput}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+            />
+            <input
+                type="email"
+                placeholder="Email"
+                className={styles.modalInput}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                className={styles.modalInput}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className={styles.modalButtons}>
+                <button className={styles.modalButton} onClick={handleCreateAccount}>
+                Create Account
+                </button>
+                <button className={styles.modalButton} onClick={handleCloseModal}>
+                Cancel
+                </button>
+            </div>
+            </div>
+        </div>
+        )}
     </>
   );
 }
