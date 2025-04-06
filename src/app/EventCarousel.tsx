@@ -40,6 +40,21 @@ export default function EventCarousel({
 
   const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_TRANSLATE_API_KEY; // Access the API key from .env.local
 
+  const labelTranslations = {
+    en: {
+      address: "Address",
+      coordinates: "Coordinates",
+      ageRange: "Age Range",
+      description: "Description",
+    },
+    hi: {
+      address: "पता",
+      coordinates: "निर्देशांक",
+      ageRange: "आयु सीमा",
+      description: "विवरण",
+    },
+  };
+
   // Load the Google Maps API once
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: API_KEY,
@@ -295,10 +310,10 @@ ${aiResponse
                   hour12: true,
                 }).format(new Date(`1970-01-01T${selectedEvent.time}:00`))}
               </p>
-              <p className={styles.modalAddress}><strong>Address:</strong> {selectedEvent.address}</p>
-              <p className={styles.modalCoordinates}><strong>Coordinates:</strong> {selectedEvent.coordinates}</p>
-              <p className={styles.modalAgeRange}><strong>Age Range:</strong> {selectedEvent.ageRange}</p>
-              <p className={styles.modalDescription}><strong>Description:</strong> {selectedEvent.description}</p>
+              <p className={styles.modalAddress}><strong>{labelTranslations[language].address}:</strong> {selectedEvent.address}</p>
+              <p className={styles.modalCoordinates}><strong>{labelTranslations[language].coordinates}:</strong> {selectedEvent.coordinates}</p>
+              <p className={styles.modalAgeRange}><strong>{labelTranslations[language].ageRange}:</strong> {selectedEvent.ageRange}</p>
+              <p className={styles.modalDescription}><strong>{labelTranslations[language].description}:</strong> {selectedEvent.description}</p>
 
 
               {/* Google Map */}
