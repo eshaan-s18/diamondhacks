@@ -1,0 +1,260 @@
+/* Carousel */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Modal Overlay */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Modal Content */
+.modalContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    color: black;
+}
+
+/* Modal Title */
+.modalTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Modal Date */
+.modalDate {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Modal Location */
+.modalLocation {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Modal Description */
+.modalDescription {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Close Button */
+.closeButton {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-end; /* Align close button to the top-right */
+}
+
+.closeButton:hover {
+    background-color: #005bb5;
+}
+
+/* Event Card Wrapper */
+.eventCardWrapper {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.2s ease; /* Add a subtle hover effect */
+}
+
+.eventCardWrapper:hover {
+    transform: scale(1.02); /* Slightly enlarge the card on hover */
+}
+
+/* Full-Screen Modal Overlay */
+.fullScreenModalOverlay {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background for full-screen modal */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Full-Screen Modal Content */
+.fullScreenModalContent {
+    width: 1000px; /* Set the desired width */
+    max-width: 95%; /* Ensure it doesn't exceed the viewport width */
+    height: 90%; /* Almost full-screen height */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent content from overflowing */
+    margin: 0 auto; /* Center the modal horizontally */
+}
+
+/* Scrollable Content Area */
+.modalScrollableContent {
+    flex: 1; /* Take up remaining space */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add padding for scrollbar */
+    margin-bottom: 20px; /* Add space for buttons */
+}
+
+/* Generate Lesson Plan Button */
+.generateButton {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.generateButton:hover {
+    background-color: #005bb5;
+}
+
+/* Download Button */
+.downloadButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.downloadButton:hover {
+    background-color: #218838;
+}
+
+/* Lesson Plan */
+.lessonPlan {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap; /* Preserve line breaks */
+    line-height: 1.5;
+}
+
+.lessonPlan h2, .lessonPlan h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.lessonPlan ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.lessonPlan p {
+    margin-bottom: 10px;
+}
+
+/* Chat Window */
+.chatWindow {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.chatHistory {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.chatInput {
+    width: calc(100% - 80px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.sendButton {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.sendButton:hover {
+    background-color: #005bb5;
+}
+
+/* Modal Header */
+.modalHeader {
+    display: flex;
+    justify-content: space-between; /* Align buttons to the left and right */
+    align-items: center;
+    margin-bottom: 20px; /* Add spacing below the header */
+}
+
+/* Print Button */
+.printButton {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.printButton:hover {
+    background-color: #005bb5;
+}
+
+/* Speak Button */
+.speakButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.speakButton:hover {
+    background-color: #218838;
+}

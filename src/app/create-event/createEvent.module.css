@@ -1,0 +1,118 @@
+.pageContainer {
+    background-color: #f9f9f9; /* Light, clean background */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+    padding: 20px;
+    font-family: "Helvetica Neue", Arial, sans-serif; /* Clean, modern font */
+  }
+  
+  .title {
+    font-size: 40px;
+    color: #333; /* Dark gray for a professional look */
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff; /* White background for the form */
+    padding: 30px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .input {
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd; /* Light border for a clean look */
+    border-radius: 8px; /* Rounded corners */
+    color: #333;
+    background-color: #f9f9f9; /* Slightly off-white background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .input:focus {
+    border-color: #007aff; /* Apple-like blue focus color */
+    box-shadow: 0 0 5px rgba(0, 122, 255, 0.5); /* Subtle blue glow */
+    outline: none;
+  }
+
+  .textarea {
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd; /* Light border for a clean look */
+    border-radius: 8px; /* Rounded corners */
+    color: #333;
+    background-color: #f9f9f9; /* Slightly off-white background */
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px; /* Minimum height for the textarea */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .textarea:focus {
+    border-color: #007aff; /* Apple-like blue focus color */
+    box-shadow: 0 0 5px rgba(0, 122, 255, 0.5); /* Subtle blue glow */
+    outline: none;
+  }
+  
+  .submitButton {
+    background-color: #007aff; /* Apple-like blue button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  .submitButton:active {
+    background-color: #003f8c; /* Even darker blue on click */
+    transform: translateY(0); /* Reset lift effect */
+  }
+
+  .ageRangeContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add spacing between the label and the dropdown */
+  }
+  
+  .label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; /* Match the dark gray color used in the title */
+  }
+  
+  .select {
+    padding: 15px; /* Match the padding of the input fields */
+    font-size: 16px; /* Match the font size of the input fields */
+    border: 1px solid #ddd; /* Match the border style of the input fields */
+    border-radius: 8px; /* Match the border radius of the input fields */
+    color: #333; /* Match the text color of the input fields */
+    background-color: #f9f9f9; /* Match the background color of the input fields */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add smooth transitions */
+  }
+  
+  .select:focus {
+    border-color: #007aff; /* Match the focus color of the input fields */
+    box-shadow: 0 0 5px rgba(0, 122, 255, 0.5); /* Add a subtle blue glow on focus */
+    outline: none; /* Remove the default outline */
+  }
+
+
+  

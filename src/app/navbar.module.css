@@ -1,0 +1,177 @@
+/* Navigation Bar */
+.navBar {
+    width: 100%;
+    background-color: #007aff; /* Apple-like blue */
+    padding: 10px 40px;
+    display: flex;
+    justify-content: flex-end;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* Navigation Container */
+  .navContainer {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Navigation Buttons */
+  .navButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .navButton:hover {
+    background-color: white;
+    color: #007aff; /* Blue hover effect */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  /* Modal Styles */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in animation */
+  }
+  
+  .modalTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #007aff; /* Blue for a professional look */
+    font-weight: bold;
+  }
+  
+  .modalInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd; /* Light border for a clean look */
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333; /* Dark gray text */
+    background-color: #f9f9f9; /* Slightly off-white background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .modalInput:focus {
+    border-color: #007aff; /* Blue focus color */
+    box-shadow: 0 0 5px rgba(0, 122, 255, 0.5); /* Subtle blue glow */
+    outline: none;
+  }
+  
+  /* Modal Buttons */
+  .modalButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .modalButton {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #007aff; /* Blue button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .modalButton:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  .modalButtonFull {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #007aff; /* Blue button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .modalButtonFull:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  /* Error Text */
+  .errorText {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Dropdown Menu */
+  .dropdownContainer {
+    position: relative;
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd; /* Light border for a clean look */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
+  }
+  
+  .dropdownItem {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #007aff; /* Blue text */
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dropdownItem:hover {
+    background-color: #007aff; /* Blue hover effect */
+    color: white;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

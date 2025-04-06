@@ -1,0 +1,97 @@
+/* Full Page Container */
+.pageContainer {
+  background-color: #f9f9f9; /* Sand-like background color */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Clean, modern font */
+}
+
+/* Header Section */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.companyContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.companyName {
+  font-size: 36px;
+  color: #333; /* Dark gray for a professional look */
+  font-weight: bold;
+  margin-bottom: 20px;
+  /* font-family: var(--font-sans); Uses Bungee Tint from globals.css */
+}
+
+.languageButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.languageButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: white;
+  color: #007aff; /* Apple-like blue */
+  border: 1px solid #ddd; /* Light border for a clean look */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.languageButton:hover {
+  background-color: #007aff; /* Blue hover effect */
+  color: white;
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+.selectedButton {
+  color: white;
+  background-color: #007aff;
+  font-weight: bold;
+}
+
+.bannerContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  width: 100%;
+  height: 550px; /* Adjust the height to crop the top part */
+  object-fit: cover; /* Ensures the image scales properly */
+  object-position: bottom; /* Crops the top part of the image */
+  border-top-left-radius: 500px; /* Rounded rectangle on the top-right */
+  border-bottom-left-radius: 500px; /* Rounded rectangle on the bottom-left */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+}
+
+/* Event Carousel Section */
+.carouselContainer {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carouselHeading {
+  font-size: 36px;
+  color: #333; /* Dark gray for a professional look */
+  font-weight: bold;
+  margin-bottom: 20px;
+  /* font-family: var(--font-sans); Uses Bungee Tint from globals.css */
+}
