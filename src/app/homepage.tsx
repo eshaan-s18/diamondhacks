@@ -22,7 +22,9 @@ export default function HomePage() {
   const [events, setEvents] = useState<Event[]>([]); // State to store fetched events
   const [translatedContent, setTranslatedContent] = useState({
     heading: "Upcoming Events",
-    companyName: "Youth Education",
+    companyName: "Bright Bridge Youth Education", // Default company name
+    description:
+    "Connecting youth with engaging workshops, classes, and resources in both English and Hindi, bridging the gap between potential and opportunity – empowering every child to build a brighter future.",
     englishButton: "English",
     hindiButton: "Hindi",
   }); // State to store translated content
@@ -64,13 +66,18 @@ export default function HomePage() {
     if (lang === "hi") {
       // Translate static content to Hindi
       const translatedHeading = await fetchTranslation("Upcoming Events", "hi");
-      const translatedCompanyName = await fetchTranslation("Youth Education", "hi");
+      const translatedCompanyName = await fetchTranslation("Bright Bridge Youth Education", "hi");
+      const translatedDescription = await fetchTranslation(
+        "Connecting youth with engaging workshops, classes, and resources in both English and Hindi, bridging the gap between potential and opportunity – empowering every child to build a brighter future.",
+        "hi"
+      );
       const translatedEnglishButton = await fetchTranslation("English", "hi");
       const translatedHindiButton = await fetchTranslation("Hindi", "hi");
 
       setTranslatedContent({
         heading: translatedHeading,
         companyName: translatedCompanyName,
+        description: translatedDescription,
         englishButton: translatedEnglishButton,
         hindiButton: translatedHindiButton,
       });
@@ -91,7 +98,9 @@ export default function HomePage() {
       // Reset to English
       setTranslatedContent({
         heading: "Upcoming Events",
-        companyName: "Youth Education",
+        companyName: "Bright Bridge Youth Education",
+        description:
+        "Connecting youth with engaging workshops, classes, and resources in both English and Hindi, bridging the gap between potential and opportunity – empowering every child to build a brighter future.",
         englishButton: "English",
         hindiButton: "Hindi",
       });
@@ -145,6 +154,9 @@ export default function HomePage() {
       <div className={styles.headerContainer}>
         <div className={styles.companyContainer}>
           <h1 className={styles.companyName}>{translatedContent.companyName}</h1>
+          <p className={styles.companyDescription}>
+            {translatedContent.description}
+          </p>
           <div className={styles.languageButtons}>
             <button
               className={`${styles.languageButton} ${

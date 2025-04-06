@@ -142,7 +142,6 @@ export default function NavBar({ language, onLanguageChange }: NavBarProps) {
     <>
       <nav className={styles.navBar}>
         <div className={styles.navContainer}>
-          <button className={styles.navButton}>{translatedNav.about}</button>
           {loggedInUser ? (
             <>
               <Link href="/your-events">

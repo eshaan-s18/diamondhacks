@@ -31,7 +31,7 @@ export default function CreateEvent() {
       const geocodingResponse = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
           address
-        )}&key=${process.env.NEXT_PUBLIC_GOOGLE_GEOCODING_API_KEY}`
+        )}&key=${process.env.NEXT_PUBLIC_GOOGLE_TRANSLATE_API_KEY}`
       );
 
       const geocodingData = await geocodingResponse.json();

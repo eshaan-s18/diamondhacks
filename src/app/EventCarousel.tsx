@@ -36,6 +36,8 @@ export default function EventCarousel({
   const [aiResponse, setAiResponse] = useState<string | null>(null); // Store the AI response
   const [isLoading, setIsLoading] = useState(false); // Track loading state
 
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null); // Track the audio object
+
   const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_TRANSLATE_API_KEY; // Access the API key from .env.local
 
   // Load the Google Maps API once
@@ -54,31 +56,78 @@ export default function EventCarousel({
     setAiResponse(null); // Clear the AI response
     setIsLoading(false); // Reset loading state
     speechSynthesis.cancel(); // Stop any ongoing speech synthesis
+
+    // Stop the audio playback
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+        setAudio(null); // Clear the audio object
+    }
   };
 
   const printPage = () => {
     window.print();
   };
 
-  const speakContent = () => {
+
+
+  const speakContent = async () => {
     if (!selectedEvent) return;
 
+    const convertTo12HourFormat = (time: string) => {
+        const [hours, minutes] = time.split(":").map(Number);
+        const period = hours >= 12 ? "PM" : "AM";
+        const adjustedHours = hours % 12 || 12; // Convert 0 to 12 for midnight
+        return `${adjustedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
+      };
+    
+      // Convert the time to 12-hour format
+      const formattedTime = convertTo12HourFormat(selectedEvent.time);
+  
     const content = `
-Title: ${selectedEvent.title}.
-Date: ${new Intl.DateTimeFormat("en-US", {
+  Title: ${selectedEvent.title}.
+  Date: ${new Intl.DateTimeFormat("en-US", {
       month: "long",
       day: "numeric",
       year: "numeric",
-    }).format(new Date(selectedEvent.date))} at ${selectedEvent.time}.
-Location: ${selectedEvent.location}.
-Address: ${selectedEvent.address}.
-Coordinates: ${selectedEvent.coordinates}.
-Age Range: ${selectedEvent.ageRange}.
-Description: ${selectedEvent.description}.
+    }).format(new Date(selectedEvent.date))} at ${formattedTime}.
+  Address: ${selectedEvent.address}.
+  Coordinates: ${selectedEvent.coordinates}.
+  Age Range: ${selectedEvent.ageRange}.
+  Description: ${selectedEvent.description}.
     `;
+  
+    try {
+      // Send a POST request to the TTS API route
+      const response = await fetch("/api/tts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: content }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to generate speech");
+      }
+  
+      // Get the audio content as a Blob
+      const audioBlob = await response.blob();
+  
+      // Create an audio URL and play it
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const newAudio = new Audio(audioUrl);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
 
-    const utterance = new SpeechSynthesisUtterance(content);
-    speechSynthesis.speak(utterance);
+      setAudio(newAudio); // Store the new audio object in state
+      newAudio.play();
+    } catch (error) {
+      console.error("Error generating speech:", error);
+      alert("Failed to generate speech. Please try again.");
+    }
   };
 
   const mapContainerStyle = {
@@ -108,7 +157,6 @@ Description: ${selectedEvent.description}.
         Create an educational lesson plan based on the following details:
         - Title: ${selectedEvent.title}
         - Description: ${selectedEvent.description}
-        - Location: ${selectedEvent.location}
         - Address: ${selectedEvent.address}
         - Coordinates: ${selectedEvent.coordinates}
         - Age Range: ${selectedEvent.ageRange}
@@ -118,7 +166,9 @@ Description: ${selectedEvent.description}.
           year: "numeric",
         }).format(new Date(selectedEvent.date))}
 
-        The lesson plan should include objectives, activities, and expected outcomes.
+        The lesson plan is for impoverished youth in India. They do not have
+        access to modern technology or resources. Please create a comprehensive
+        lesson plan that should include objectives, activities, and expected outcomes.
       `;
 
       const response = await ai.models.generateContent({
@@ -149,7 +199,6 @@ Date: ${new Intl.DateTimeFormat("en-US", {
       year: "numeric",
     }).format(new Date(selectedEvent.date))}
 
-Location: ${selectedEvent.location}
 Address: ${selectedEvent.address}
 Coordinates: ${selectedEvent.coordinates}
 Age Range: ${selectedEvent.ageRange}
@@ -246,7 +295,6 @@ ${aiResponse
                   hour12: true,
                 }).format(new Date(`1970-01-01T${selectedEvent.time}:00`))}
               </p>
-              <p className={styles.modalLocation}><strong>Location:</strong> {selectedEvent.location}</p>
               <p className={styles.modalAddress}><strong>Address:</strong> {selectedEvent.address}</p>
               <p className={styles.modalCoordinates}><strong>Coordinates:</strong> {selectedEvent.coordinates}</p>
               <p className={styles.modalAgeRange}><strong>Age Range:</strong> {selectedEvent.ageRange}</p>
